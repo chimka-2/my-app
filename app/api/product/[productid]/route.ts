@@ -5,19 +5,19 @@ import cloudinary from '../../../utils/cloudinary';
 
 
 
-export async function GET(request: Request, context: { params: { productid: string } } ) {
+export async function GET(request: Request, context: { params: { productid: string } }) {
     // Connect to the database
     await connectdb();
 
     // Retrieve product ID from params
-   const productId = context.params.productid;
+   const { productid } = context.params;
 
     // Log the product ID for debugging
-    console.log("Product ID:", productId);
+    console.log("Product ID:", productid);
 
     try {
         // Query the product from the database using the provided ID
-        const product = await Product.findById(productId);
+        const product = await Product.findById(productid);
 
         // If the product is not found, return a 404 response
         if (!product) {
