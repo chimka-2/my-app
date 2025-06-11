@@ -12,7 +12,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
 
   //   // Retrieve product ID from params
   //  const productid = resolvedParams.productid;
-   const productid = (await params).productid
+   const {productid} = await params
 
     // Log the product ID for debugging
     console.log("Product ID:", productid);
