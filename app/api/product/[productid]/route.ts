@@ -8,10 +8,11 @@ import cloudinary from '../../../utils/cloudinary';
 export async function GET(request: NextRequest, { params }: { params: Promise<{ productid: string }> }) {
     // Connect to the database
     await connectdb();
-    const resolvedParams = await params;
+  //   const resolvedParams = await params;
 
-    // Retrieve product ID from params
-   const productid = resolvedParams.productid;
+  //   // Retrieve product ID from params
+  //  const productid = resolvedParams.productid;
+   const productid = (await params).productid
 
     // Log the product ID for debugging
     console.log("Product ID:", productid);
