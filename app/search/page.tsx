@@ -1,10 +1,12 @@
 'use client'
 
 import React, { useState, useEffect } from 'react';
+import {Suspense} from 'react'
 import { useSearchParams } from 'next/navigation';
 import axios from 'axios';
 import Link from 'next/link';
 import Image from 'next/image';
+
 
 interface Product {
   _id: string;
@@ -13,8 +15,20 @@ interface Product {
   description: string;
   price: number;
 }
+ 
+
+
 
 export default function SearchPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SearchComponent />
+    </Suspense>
+  )
+}
+
+
+ function SearchComponent() {
   const [products, setProducts] = useState<Product[]>([]);
   const searchParams = useSearchParams();
 
