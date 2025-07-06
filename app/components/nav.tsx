@@ -24,6 +24,7 @@ export default function Nav() {
       </div>
       <Link href="/products" className="border-x border-x-emerald-300 rounded-lg  px-1 sm:px-3 py-1 font-bold hover:border-y active:border-x-0 transition-all">Add Product</Link>
 
+
     </nav>
   );
 }

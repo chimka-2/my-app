@@ -4,6 +4,20 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast/headless';
 import addAction from '../utils/addAction';
+import { motion, useInView } from 'framer-motion'
+
+
+const textVariants = {
+  hidden: { opacity: 0, y: 100 },
+  visible: { opacity: 1, y: 0 },
+  transition: { duration: 0.8, ease: 'easeOut' },
+}
+
+const FormVariants = {
+  hidden: { opacity: 0, y: 100 },
+  visible: { opacity: 1, y: 0 },
+  transition: { duration: 0.8, ease: 'easeOut' },
+}
 
 const AddProduct = () => {
   const router = useRouter();
@@ -55,7 +69,11 @@ const AddProduct = () => {
   //
 
   return (
-    <form
+    <motion.form
+      variants={FormVariants}
+      initial="hidden"
+      animate="visible"
+      transition = {{duration:1, ease: 'easeOut'}}
       action={clientAddProduct}
       className="flex flex-col my-12 space-y-4 items-center w-full max-w-xl mx-auto rounded-lg shadow-md"
     >
@@ -121,7 +139,7 @@ const AddProduct = () => {
       <button className="bg-blue-900 text-white px-4 py-1 rounded-lg w-full">
         Add Product
       </button>
-    </form>
+    </motion.form>
   );
 };
 
